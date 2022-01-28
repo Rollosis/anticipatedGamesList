@@ -1,53 +1,134 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>Most Anticipated Games of 2022</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/jumbotron/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>Most Anticipated Games of 2022</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!--<link rel="stylesheet" href="css/style.css">-->
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+  <link rel="stylesheet" href="public/css/style.css">
+</head>
 
-  </head>
-  <body>
+<body>
+  <main>
 
-    <main>
-      <div class="container py-4">
-        <div class="p-5 mb-4 bg-light rounded-3">
-          <div class="container-fluid py-5">
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
             <h1 class="display-5 fw-bold">Most Anticipated Games of 2022</h1>
             <h2 id="status">Coming Soon!</h2>
-            <!--<p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-            <button class="btn btn-primary btn-lg" type="button">Example button</button>-->
           </div>
         </div>
-        <!--<footer class="pt-3 mt-4 text-muted border-top"></footer>-->
       </div>
-    </main>
+    </section>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script charset="utf-8" src="js/index.js"></script>
-  </body>
+    <section class="sec-pad-top sec-pad-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="selectTable">Choose table</label>
+                  <select class="form-control" id="selectTable">
+                    <option value="laura">Laura</option>
+                    <option value="roope">Roope</option>
+                  </select>
+                </div>
+              </div>
+              <div id="formGroup" class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="gameName">Game</label>
+                  <input type="text" class="form-control" id="gameName">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="platform">Paatform</label>
+                  <select id="platform" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>PS5</option>
+                    <option>Switch</option>
+                    <option>PC</option>
+                    <option>Xbox</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputZip">Release date</label>
+                  <input type="date" class="form-control" id="releaseDate">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Laura</h2>
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Platform</th>
+                  <th scope="col">Release date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sifu</td>
+                  <td>Playstation 5</td>
+                  <td>February 8</td>
+                </tr>
+                <tr>
+                  <td>Horizon Forbidden West</td>
+                  <td>Playstation 5</td>
+                  <td>February 18</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <h2>Roope</h2>
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Platform</th>
+                  <th scope="col">Release date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sifu</td>
+                  <td>Playstation 5</td>
+                  <td>February 8</td>
+                </tr>
+                <tr>
+                  <td>Horizon Forbidden West</td>
+                  <td>Playstation 5</td>
+                  <td>February 18</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script charset="utf-8" src="js/index.js"></script>
+</body>
+
 </html>

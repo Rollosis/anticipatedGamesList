@@ -1,0 +1,15 @@
+.sec-pad-top {
+  padding-top:30px;
+}
+
+.sec-pad-bottom {
+  padding-bottom:30px;
+}
+
+#formGroup {
+  margin-bottom:10px;
+}
+
+button {
+  padding:10px 40px !important;
+}

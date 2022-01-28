@@ -36,7 +36,8 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="selectTable">Choose table</label>
-                  <select class="form-control" id="selectTable">
+                  <select class="form-control" id="selectTable" required>
+                    <option value="">Choose...</option>
                     <option value="laura">Laura</option>
                     <option value="roope">Roope</option>
                   </select>
@@ -45,12 +46,12 @@
               <div id="formGroup" class="form-row">
                 <div class="form-group col-md-6">
                   <label for="gameName">Game</label>
-                  <input type="text" class="form-control" id="gameName">
+                  <input type="text" class="form-control" id="gameName" required>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="platform">Platform</label>
-                  <select id="platform" class="form-control">
-                    <option selected>Choose...</option>
+                  <select id="platform" class="form-control" required>
+                    <option value="">Choose...</option>
                     <option>PS5</option>
                     <option>Switch</option>
                     <option>PC</option>
@@ -58,7 +59,7 @@
                   </select>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputZip">Release date</label>
+                  <label for="releaseDate">Release date</label>
                   <input type="date" class="form-control" id="releaseDate">
                 </div>
               </div>

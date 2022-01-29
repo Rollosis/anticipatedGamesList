@@ -44,7 +44,7 @@ if (user === 'laura') {
 } else if (user === 'roope') {
   // Push Roopes values
   newGameNameItemsR.push(newGameName);
-  newGamePlatformItemsR.push(newGameName);
+  newGamePlatformItemsR.push(newGamePlatform);
   newGameReleasedateItemsR.push(newGameReleaseDate);
 }
 

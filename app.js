@@ -1,55 +1,92 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
-
-// Laurans values
-var newGameNameItems = [];
-var newGamePlatformItems = [];
-var newGameReleasedateItems = [];
-
-// Roopes values
-var newGameNameItemsR = [];
-var newGamePlatformItemsR = [];
-var newGameReleasedateItemsR = [];
 
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'));
+
+//mongoose.connect('mongodb+srv://admin-robert:AdminPass@cluster0.jisc7.mongodb.net/gamelistDB');
+mongoose.connect('mongodb+srv://admin-robert:AdminPass@cluster0.jisc7.mongodb.net/gamelistDB?retryWrites=true&w=majority');
+
+const gameListSchema = new mongoose.Schema ({
+  name: String,
+  platform: String,
+  releaseDate: String
+});
+
+const Roope = mongoose.model('Roope', gameListSchema);
+const Laura = mongoose.model('Laura', gameListSchema);
 
 app.get('/', function(req, res) {
-  // var today = new Date();
-  // var options = {
-  //   weekday: 'long',
-  //   day: 'numeric',
-  //   month: 'long'
-  // };
-  // var day = today.toLocaleDateString('en-US', options);
-  res.render('gamelist',
-  {newGameNameItems: newGameNameItems, newGamePlatformItems: newGamePlatformItems, newGameReleasedateItems: newGameReleasedateItems, newGameNameItemsR: newGameNameItemsR, newGamePlatformItemsR: newGamePlatformItemsR, newGameReleasedateItemsR: newGameReleasedateItemsR});
+  var modelRoope = mongoose.model('Roope');
+  var modelLaura = mongoose.model('Laura');
+
+  modelRoope.find({}, function (err, roopeGames) {
+    modelLaura.find({}, function (err, lauraGames) {
+      res.render('gamelist', {roopeGameList: roopeGames, lauraGameList: lauraGames
+      });
+    });
+  });
+});
+
+app.get('/deleteGame', function(req, res) {
+  var modelRoope = mongoose.model('Roope');
+  var modelLaura = mongoose.model('Laura');
+
+  modelRoope.find({}, function (err, roopeGames) {
+    modelLaura.find({}, function (err, lauraGames) {
+      res.render('deleteGame', {roopeGameList: roopeGames, lauraGameList: lauraGames
+      });
+    });
+  });
 });
 
 app.post('/', function(req, res) {
   user = req.body.user;
-  // Lauras inputs
-  newGameName = req.body.gameName;
-  newGamePlatform = req.body.platform;
-  newGameReleaseDate = req.body.releaseDate;
+  gameName = req.body.gameName;
+  gamePlatform = req.body.platform;
+  gameReleaseDate = req.body.releaseDate;
 
-if (user === 'laura') {
-  // Push Lauras values
-  newGameNameItems.push(newGameName);
-  newGamePlatformItems.push(newGamePlatform);
-  newGameReleasedateItems.push(newGameReleaseDate);
-} else if (user === 'roope') {
-  // Push Roopes values
-  newGameNameItemsR.push(newGameName);
-  newGamePlatformItemsR.push(newGamePlatform);
-  newGameReleasedateItemsR.push(newGameReleaseDate);
-}
+  if (user === 'roope' && user != 'laura' && gameReleaseDate.length > 0) {
+    Roope.create({name: gameName, platform: gamePlatform, releaseDate: gameReleaseDate});
+  } else if (user === 'roope' && user != 'laura' && gameReleaseDate.length === 0) {
+    Roope.create({name: gameName, platform: gamePlatform, releaseDate: 'TBA'});
+  }
+
+  if (user === 'laura' && user != 'roope' && gameReleaseDate.length > 0) {
+    Laura.create({name: gameName, platform: gamePlatform, releaseDate: gameReleaseDate});
+  } else if (user === 'laura' && user != 'roope' && gameReleaseDate.length === 0) {
+    Laura.create({name: gameName, platform: gamePlatform, releaseDate: 'TBA'});
+  }
 
   res.redirect('/');
-});
+ });
+
+ app.post('/deleteGame', function(req, res) {
+   user = req.body.userDelete;
+   gameLaura = req.body.selectLaura;
+   gameRoope = req.body.selectRoope;
+
+   if (user === 'roopeDelete') {
+     Roope.deleteOne({name: gameRoope}, function(err) {
+       if (err) {
+         console.log(err);
+       }
+     });
+   } else if (user === 'lauraDelete') {
+     Laura.deleteOne({name: gameLaura}, function(err) {
+       if (err) {
+         console.log(err);
+       }
+     });
+   }
+
+   res.redirect('/deleteGame');
+  });
 
 app.listen(process.env.PORT || 3000, function() {
   console.log('Server running on port 3000');

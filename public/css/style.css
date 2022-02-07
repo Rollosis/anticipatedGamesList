@@ -1,3 +1,13 @@
+body {
+  background-image:url("/images/cyber_background.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+  color:#E9BFF2;
+}
+
 .sec-pad-top {
   padding-top:30px;
 }
@@ -8,6 +18,11 @@
 
 .table {
   margin-bottom:3rem !important;
+  color:#E9BFF2;
+}
+
+.table-hover tbody tr:hover td.change-color {
+  color:#E528D6 !important;
 }
 
 .form-group {
@@ -24,10 +39,6 @@ select:hover, input[type=date] {
 
 button {
   padding:10px 40px !important;
-}
-
-.delete {
-
 }
 
 @media (max-width:500px) {

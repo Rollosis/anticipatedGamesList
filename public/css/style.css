@@ -5,7 +5,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
-  color:#E9BFF2;
+  color:#F1E3F7;
 }
 
 .sec-pad-top {
@@ -18,7 +18,8 @@ body {
 
 .table {
   margin-bottom:3rem !important;
-  color:#E9BFF2;
+  /*color:#E9BFF2;*/
+  color:#F1E3F7;
 }
 
 .table-hover tbody tr:hover td.change-color {
@@ -44,6 +45,7 @@ button {
 .btn-primary {
   background-color: #722284 !important;
   border-color: #722284 !important;
+  color:#F1E3F7;
 }
 
 @media (max-width:500px) {

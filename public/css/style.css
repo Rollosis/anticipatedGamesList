@@ -6,6 +6,10 @@
   padding-bottom:30px;
 }
 
+.table {
+  margin-bottom:3rem !important;
+}
+
 .form-group {
   margin:10px 0px;
 }
@@ -20,4 +24,26 @@ select:hover, input[type=date] {
 
 button {
   padding:10px 40px !important;
+}
+
+.delete {
+
+}
+
+@media (max-width:500px) {
+  .delete {
+    margin-top:1rem !important;
+  }
+
+  .sec-pad-top {
+    padding-top:10px !important;
+  }
+
+  .sec-pad-bottom {
+    padding-bottom:10px !important;
+  }
+
+}
+
+@media only screen and (max-width: 480px) {
 }

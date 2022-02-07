@@ -41,6 +41,11 @@ button {
   padding:10px 40px !important;
 }
 
+.btn-primary {
+  background-color: #722284 !important;
+  border-color: #722284 !important;
+}
+
 @media (max-width:500px) {
   .delete {
     margin-top:1rem !important;

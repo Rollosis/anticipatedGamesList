@@ -26,6 +26,14 @@ body {
   color:#E528D6 !important;
 }
 
+.hover-target {
+  display:none;  
+}
+
+.hover-trigger:hover .hover-target {
+  display:initial;
+}
+
 .form-group {
   margin:10px 0px;
 }
@@ -46,6 +54,13 @@ button {
   background-color: #722284 !important;
   border-color: #722284 !important;
   color:#F1E3F7;
+}
+
+.btn-danger {
+  background-color: #DE0A87 !important;
+  border-color: #DE0A87 !important;
+  color: #F1E3F7;
+  padding: 5px 10px !important;
 }
 
 @media (max-width:500px) {

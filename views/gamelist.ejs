@@ -133,10 +133,11 @@
               </thead>
               <tbody>
                 <% lauraGameList.forEach(function(game) { %>
-                  <tr>
+                  <tr class="hover-trigger">
                     <td class="change-color"><%= game.name %></td>
                     <td class="change-color"><%= game.platform %></td>
                     <td class="change-color"><%= game.releaseDate %></td>
+                    <td><button type="submit" class="btn btn-danger hover-target">Remove</button></td>
                   </tr>
                 <% }); %>
               </tbody>

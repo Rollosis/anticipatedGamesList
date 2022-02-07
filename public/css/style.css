@@ -76,7 +76,9 @@ button {
     padding-bottom:10px !important;
   }
 
-}
-
-@media only screen and (max-width: 480px) {
+  body {
+    background-image:none !important;
+    background-color:#000000 !important;
+    color:#F1E3F7;
+  }
 }

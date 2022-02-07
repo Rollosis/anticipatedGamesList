@@ -22,6 +22,38 @@ $('#selectTable').change(function() {
       }
     });
 
+    $('#updateTable').change(function() {
+        if ($(this).val() == 'lauraUpdate') {
+          $('#deleteLabel').css('display', 'initial');
+          $('#deleteL').css('display', 'initial');
+          $('#deleteR').css('display', 'none');
+        } else if ($(this).val() == 'roopeUpdate') {
+          $('#deleteLabel').css('display', 'initial');
+          $('#deleteL').css('display', 'none');
+          $('#deleteR').css('display', 'initial');
+        } else {
+          $('#deleteLabel').css('display', 'none');
+          $('#deleteL').css('display', 'none');
+          $('#deleteR').css('display', 'none');
+        }
+      });
+
+      function deleteConfirm() {
+        if (!confirm("Do you really want to delete this game from the list?")) {
+          return false;
+        }
+        this.form.submit();
+      }
+
+      // $('.deleteButton').click(function() {
+      //   var answer = window.confirm('Do you really want to delete this game from the list?');
+      //   if (answer) {
+      //     console.log('Deleted!');
+      //   } else {
+      //     console.log('The item was not deleted');
+      //   }
+      // });
+
     // $('#deleteUser').change(function() {
     //     if ($(this).val() == 'laura') {
     //       $('#deleteLaura').css('display', 'initial');

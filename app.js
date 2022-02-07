@@ -34,29 +34,17 @@ app.get('/', function(req, res) {
 
 });
 
-app.get('/deleteGame', function(req, res) {
-  var modelRoope = mongoose.model('Roope');
-  var modelLaura = mongoose.model('Laura');
-
-  modelRoope.find({}, function (err, roopeGames) {
-    modelLaura.find({}, function (err, lauraGames) {
-      res.render('deleteGame', {roopeGameList: roopeGames, lauraGameList: lauraGames
-      });
-    });
-  });
-});
-
-app.get('/updateGame', function(req, res) {
-  var modelRoope = mongoose.model('Roope');
-  var modelLaura = mongoose.model('Laura');
-
-  modelRoope.find({}, function (err, roopeGames) {
-    modelLaura.find({}, function (err, lauraGames) {
-      res.render('updateGame', {roopeGameList: roopeGames, lauraGameList: lauraGames
-      });
-    });
-  });
-});
+// app.get('/updateGame', function(req, res) {
+//   var modelRoope = mongoose.model('Roope');
+//   var modelLaura = mongoose.model('Laura');
+//
+//   modelRoope.find({}, function (err, roopeGames) {
+//     modelLaura.find({}, function (err, lauraGames) {
+//       res.render('updateGame', {roopeGameList: roopeGames, lauraGameList: lauraGames
+//       });
+//     });
+//   });
+// });
 
 app.post('/', function(req, res) {
   user = req.body.user;
@@ -79,52 +67,54 @@ app.post('/', function(req, res) {
   res.redirect('/');
 });
 
- app.post('/deleteGame', function(req, res) {
-   user = req.body.userDelete;
-   gameLaura = req.body.selectLaura;
-   gameRoope = req.body.selectRoope;
+ app.post('/delete', function(req, res) {
+   const clickedItemId = req.body.deleteButton;
 
-   if (user === 'roopeDelete') {
-     Roope.deleteOne({name: gameRoope}, function(err) {
-       if (err) {
-         console.log(err);
-       }
-     });
-   } else if (user === 'lauraDelete') {
-     Laura.deleteOne({name: gameLaura}, function(err) {
-       if (err) {
-         console.log(err);
-       }
-     });
-   }
+   Laura.findByIdAndRemove(clickedItemId, function(err){
+     if (!err) {
+       console.log('Success');
+     }
+   });
 
-   res.redirect('/deleteGame');
+   res.redirect('/');
  });
 
- app.post('/updateGame', function(req, res) {
-   user = req.body.userUpdate;
-   updateLaura = req.body.selectLaura;
-   updateRoope = req.body.selectRoope;
-   updateValue = req.body.updateValue;
+ app.post('/deleted', function(req, res) {
+   const clickedItemId = req.body.deletedButton;
 
-   if (user === 'roopeUpdate') {
-     Roope.updateOne({name: updateRoope}, {name: updateValue}, function(err) {
-       if (err) {
-         console.log(err);
-       }
-     });
-   } else if (user === 'lauraUpdate') {
-     Laura.updateOne({name: updateLaura}, function(err) {
-       if (err) {
-         console.log(err);
-       }
-     });
-   }
+   Roope.findByIdAndRemove(clickedItemId, function(err){
+     if (!err) {
+       console.log('Success');
+     }
+   });
 
-   console.log(user + ' ' + updateRoope + ' ' + updateValue);
-   res.redirect('/updateGame');
+   res.redirect('/');
+ });
+
+ // app.post('/updateGame', function(req, res) {
+ //   user = req.body.userUpdate;
+ //   updateLaura = req.body.selectLaura;
+ //   updateRoope = req.body.selectRoope;
+ //   updateValue = req.body.updateValue;
+ //
+ //   if (user === 'roopeUpdate') {
+ //     Roope.updateOne({name: updateRoope}, {name: updateValue}, function(err) {
+ //       if (err) {
+ //         console.log(err);
+ //       }
+ //     });
+ //   } else if (user === 'lauraUpdate') {
+ //     Laura.updateOne({name: updateLaura}, function(err) {
+ //       if (err) {
+ //         console.log(err);
+ //       }
+ //     });
+ //   }
+ //
+ //   console.log(user + ' ' + updateRoope + ' ' + updateValue);
+ //   res.redirect('/updateGame');
+ //  });
+
+  app.listen(process.env.PORT || 3000, function() {
+    console.log('Server has started successfully');
   });
-
-app.listen(process.env.PORT || 3000, function() {
-  console.log('Server has started successfully');
-});

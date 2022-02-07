@@ -32,15 +32,15 @@
       <div class="container">
         <div class="row">
           <div class="col-md-9">
-            <h2>Remove a game from the list</h2>
-            <form action="/deleteGame" method="post">
+            <h2>Update game info</h2>
+            <form action="/updateGame" method="post">
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="deleteTable">Who is removing?</label>
-                  <select class="form-control" id="deleteTable" name="userDelete" required>
+                  <label for="deleteTable">Who is updating?</label>
+                  <select class="form-control" id="updateTable" name="userUpdate" required>
                     <option value="">Select user...</option>
-                    <option value="lauraDelete" name="laura">Laura</option>
-                    <option value="roopeDelete" name="roope">Roope</option>
+                    <option value="lauraUpdate" name="laura">Laura</option>
+                    <option value="roopeUpdate" name="roope">Roope</option>
                   </select>
                 </div>
               </div>
@@ -59,6 +59,8 @@
                       <option name="game"><%= game.name %></option>
                     <% }); %>
                   </select>
+                  <label for="">Change name</label>
+                  <input type="text" name="updateValue" value="">
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Remove game</button>

@@ -31,7 +31,7 @@
     <section class="sec-pad-top sec-pad-bottom" id="addForm">
       <div class="container">
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-md-12">
             <h2>Add a new game</h2>
             <form action="/" method="post">
               <div class="form-row">
@@ -66,9 +66,6 @@
               </div>
               <button type="submit" class="btn btn-primary">Add game</button>
             </form>
-          </div>
-          <div class="col-md-3 delete">
-            <h2>Delete a game from the list <a href="/deleteGame">here</a></h2>
           </div>
         </div>
       </div>
@@ -137,7 +134,11 @@
                     <td class="change-color"><%= game.name %></td>
                     <td class="change-color"><%= game.platform %></td>
                     <td class="change-color"><%= game.releaseDate %></td>
-                    <td><button type="submit" class="btn btn-danger hover-target">Remove</button></td>
+                    <td>
+                      <form class="" action="/delete" method="post">
+                        <button type="submit" name="deleteButton" value="<%= game._id %>" class="btn btn-danger hover-target deleteButton" onClick="deleteConfirm()">Remove</button>
+                      </form>
+                    </td>
                   </tr>
                 <% }); %>
               </tbody>
@@ -155,10 +156,15 @@
               </thead>
               <tbody>
                 <% roopeGameList.forEach(function(game) { %>
-                  <tr>
+                  <tr class="hover-trigger">
                     <td class="change-color"><%= game.name %></td>
                     <td class="change-color"><%= game.platform %></td>
                     <td class="change-color"><%= game.releaseDate %></td>
+                    <td>
+                      <form class="" action="/deleted" method="post">
+                        <button type="submit" name="deletedButton" value="<%= game._id %>" class="btn btn-danger hover-target deleteButton" onClick="deleteConfirm()">Remove</button>
+                      </form>
+                    </td>
                   </tr>
                 <% }); %>
               </tbody>

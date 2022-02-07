@@ -136,7 +136,7 @@
                     <td class="change-color"><%= game.releaseDate %></td>
                     <td>
                       <form class="" action="/delete" method="post">
-                        <button type="submit" name="deleteButton" value="<%= game._id %>" class="btn btn-danger hover-target deleteButton" onClick="deleteConfirm()">Remove</button>
+                        <button type="submit" name="deleteButton" class="btn btn-danger hover-target deleteButton" value="<%= game._id %>" onClick="deleteConfirm()">X</button>
                       </form>
                     </td>
                   </tr>
@@ -162,7 +162,7 @@
                     <td class="change-color"><%= game.releaseDate %></td>
                     <td>
                       <form class="" action="/deleted" method="post">
-                        <button type="submit" name="deletedButton" value="<%= game._id %>" class="btn btn-danger hover-target deleteButton" onClick="deleteConfirm()">Remove</button>
+                        <button type="submit" name="deletedButton" class="btn btn-danger hover-target deleteButton" value="<%= game._id %>" onclick="this.form.submit()">X</button>
                       </form>
                     </td>
                   </tr>

@@ -38,31 +38,9 @@ $('#selectTable').change(function() {
         }
       });
 
-      function deleteConfirm() {
-        if (!confirm("Do you really want to delete this game from the list?")) {
-          return false;
-        }
-        this.form.submit();
-      }
-
-      // $('.deleteButton').click(function() {
-      //   var answer = window.confirm('Do you really want to delete this game from the list?');
-      //   if (answer) {
-      //     console.log('Deleted!');
-      //   } else {
-      //     console.log('The item was not deleted');
+      // function deleteConfirm() {
+      //   if (confirm("Do you really want to delete this game from the list?")) {
+      //     return false;
       //   }
-      // });
-
-    // $('#deleteUser').change(function() {
-    //     if ($(this).val() == 'laura') {
-    //       $('#deleteLaura').css('display', 'initial');
-    //       $('#deleteRoope').css('display', 'none');
-    //     } else if ($(this).val() == 'roope') {
-    //       $('#deleteRoope').css('display', 'initial');
-    //       $('#addLaura').css('display', 'none');
-    //     } else {
-    //       $('#deleteLaura').css('display', 'none');
-    //       $('#deleteRoope').css('display', 'none');
-    //     }
-    //   });
+      //   this.form.submit();
+      // }

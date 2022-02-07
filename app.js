@@ -72,7 +72,7 @@ app.post('/', function(req, res) {
 
    Laura.findByIdAndRemove(clickedItemId, function(err){
      if (!err) {
-       console.log('Success');
+       console.log('Deleted');
      }
    });
 
@@ -84,7 +84,7 @@ app.post('/', function(req, res) {
 
    Roope.findByIdAndRemove(clickedItemId, function(err){
      if (!err) {
-       console.log('Success');
+       console.log('Deleted');
      }
    });
 

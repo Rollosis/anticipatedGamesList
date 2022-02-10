@@ -38,25 +38,25 @@ app.get('/', function(req, res) {
       modelReleased.find({}, function(err, releasedGames) {
       res.render('gamelist', {roopeGameList: roopeGames, lauraGameList: lauraGames, releasedGameList: releasedGames});
     });
-  });
-});
-
-});
-
-app.get('/sortName', function(req, res) {
-  var modelRoope = mongoose.model('Roope');
-  var modelLaura = mongoose.model('Laura');
-  var modelReleased = mongoose.model('Release');
-
-  modelRoope.find({}, function (err, roopeGames) {
-    modelLaura.find({}, function (err, lauraGames) {
-      modelReleased.find({}, function(err, releasedGames) {
-      res.render('gamelist', {roopeGameList: roopeGames, lauraGameList: lauraGames, releasedGameList: releasedGames});
-    });
   }).sort({releaseDate: 1});
 }).sort({releaseDate: 1});
 
 });
+
+// app.get('/sortName', function(req, res) {
+//   var modelRoope = mongoose.model('Roope');
+//   var modelLaura = mongoose.model('Laura');
+//   var modelReleased = mongoose.model('Release');
+//
+//   modelRoope.find({}, function (err, roopeGames) {
+//     modelLaura.find({}, function (err, lauraGames) {
+//       modelReleased.find({}, function(err, releasedGames) {
+//       res.render('gamelist', {roopeGameList: roopeGames, lauraGameList: lauraGames, releasedGameList: releasedGames});
+//     });
+//   }).sort({releaseDate: 1});
+// }).sort({releaseDate: 1});
+//
+// });
 
 // app.get('/updateGame', function(req, res) {
 //   var modelRoope = mongoose.model('Roope');

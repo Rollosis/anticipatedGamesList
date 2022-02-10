@@ -43,21 +43,6 @@ app.get('/', function(req, res) {
 
 });
 
-// app.get('/sortName', function(req, res) {
-//   var modelRoope = mongoose.model('Roope');
-//   var modelLaura = mongoose.model('Laura');
-//   var modelReleased = mongoose.model('Release');
-//
-//   modelRoope.find({}, function (err, roopeGames) {
-//     modelLaura.find({}, function (err, lauraGames) {
-//       modelReleased.find({}, function(err, releasedGames) {
-//       res.render('gamelist', {roopeGameList: roopeGames, lauraGameList: lauraGames, releasedGameList: releasedGames});
-//     });
-//   }).sort({releaseDate: 1});
-// }).sort({releaseDate: 1});
-//
-// });
-
 // app.get('/updateGame', function(req, res) {
 //   var modelRoope = mongoose.model('Roope');
 //   var modelLaura = mongoose.model('Laura');
@@ -150,6 +135,28 @@ app.post('/', function(req, res) {
 
    res.redirect('/');
  });
+
+ app.post('/gameReview', function(req, res) {
+   const game = req.body.releasedGameName;
+   const rating = req.body.rating;
+   const review = req.body.review;
+
+   const updateItem = {name: game}
+
+   Release.find({name: game}, function(err) {
+     if (!err || document.getElementById('review').value != "") {
+       Release.updateMany(updateItem, {rating: rating, review: review}, function(err, res) {
+         if (err) {
+           console.log(err)
+         }
+       });
+     } else {
+       console.log(err);
+     }
+   });
+
+   res.redirect('/');
+  });
 
  // app.post('/updateGame', function(req, res) {
  //   user = req.body.userUpdate;

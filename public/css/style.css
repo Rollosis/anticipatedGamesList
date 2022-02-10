@@ -56,9 +56,16 @@ button {
   color:#F1E3F7;
 }
 
-.btn-danger {
+.btn-danger.deleteButton {
   background-color: #DE0A87 !important;
   border-color: #DE0A87 !important;
+  color: #F1E3F7;
+  padding: 2px 10px !important;
+}
+
+.btn-warning.transferButton {
+  background-color: #CA01D0 !important;
+  border-color: #CA01D0 !important;
   color: #F1E3F7;
   padding: 2px 10px !important;
 }

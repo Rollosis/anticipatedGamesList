@@ -18,19 +18,43 @@ const gameListSchema = new mongoose.Schema ({
   releaseDate: String
 });
 
+const releasedGameSchema = new mongoose.Schema ({
+  name: String,
+  rating: Number,
+  review: String
+});
+
 const Roope = mongoose.model('Roope', gameListSchema);
 const Laura = mongoose.model('Laura', gameListSchema);
+const Release = mongoose.model('Release', releasedGameSchema);
 
 app.get('/', function(req, res) {
   var modelRoope = mongoose.model('Roope');
   var modelLaura = mongoose.model('Laura');
+  var modelReleased = mongoose.model('Release');
 
   modelRoope.find({}, function (err, roopeGames) {
     modelLaura.find({}, function (err, lauraGames) {
-      res.render('gamelist', {roopeGameList: roopeGames, lauraGameList: lauraGames
-      });
-    }).sort({releaseDate: 1});
+      modelReleased.find({}, function(err, releasedGames) {
+      res.render('gamelist', {roopeGameList: roopeGames, lauraGameList: lauraGames, releasedGameList: releasedGames});
+    });
+  });
+});
+
+});
+
+app.get('/sortName', function(req, res) {
+  var modelRoope = mongoose.model('Roope');
+  var modelLaura = mongoose.model('Laura');
+  var modelReleased = mongoose.model('Release');
+
+  modelRoope.find({}, function (err, roopeGames) {
+    modelLaura.find({}, function (err, lauraGames) {
+      modelReleased.find({}, function(err, releasedGames) {
+      res.render('gamelist', {roopeGameList: roopeGames, lauraGameList: lauraGames, releasedGameList: releasedGames});
+    });
   }).sort({releaseDate: 1});
+}).sort({releaseDate: 1});
 
 });
 
@@ -79,10 +103,46 @@ app.post('/', function(req, res) {
    res.redirect('/');
  });
 
+ app.post('/transferLaura', function(req, res) {
+   const clickedItem = req.body.transferButton;
+
+   Release.create({name: clickedItem}, function(err){
+     if (!err) {
+       console.log('Transferred ' + clickedItem);
+     }
+   });
+
+   Laura.findOneAndDelete({name: clickedItem}, function(err){
+     if (!err) {
+       console.log('Deleted');
+     }
+   });
+
+   res.redirect('/');
+ });
+
  app.post('/deleted', function(req, res) {
    const clickedItemId = req.body.deletedButton;
 
    Roope.findByIdAndRemove(clickedItemId, function(err){
+     if (!err) {
+       console.log('Deleted');
+     }
+   });
+
+   res.redirect('/');
+ });
+
+ app.post('/transferRoope', function(req, res) {
+   const clickedItem = req.body.transferButton;
+
+   Release.create({name: clickedItem}, function(err){
+     if (!err) {
+       console.log('Transferred ' + clickedItem);
+     }
+   });
+
+   Roope.findOneAndDelete({name: clickedItem}, function(err){
      if (!err) {
        console.log('Deleted');
      }

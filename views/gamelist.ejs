@@ -73,50 +73,6 @@
       </div>
     </section>
 
-    <section class="sec-pad-top sec-pad-bottom" id="lauraDeleteForm" style="display:none;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <form action="/" method="post">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <select class="form-control" id="deleteTable" name="user" required>
-                    <option value="">Select game...</option>
-                    <% lauraGameList.forEach(function(game) { %>
-                      <option value="laura" name="laura" id="deleteLaura"><%= game.name %></option>
-                    <% }); %>
-                  </select>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Remove game</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec-pad-top sec-pad-bottom" id="roopeDeleteForm" style="display:none;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <form action="/" method="post">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <select class="form-control" id="deleteTable" name="user" required>
-                    <option value="">Select game...</option>
-                    <% roopeGameList.forEach(function(game) { %>
-                      <option value="roope" name="roope" id="deleteRoope"><%= game.name %></option>
-                    <% }); %>
-                  </select>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Remove game</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="sec-pad-top">
       <div class="container">
         <div class="row">
@@ -141,6 +97,11 @@
                         <button type="submit" name="deleteButton" class="btn btn-danger hover-target deleteButton" value="<%= game._id %>" onClick="deleteConfirm()">X</button>
                       </form>
                     </td>
+                    <td>
+                      <form class="" action="/transferLaura" method="post">
+                        <button type="submit" name="transferButton" class="btn btn-warning hover-target transferButton" value="<%= game.name %>" onclick="this.form.submit()">-></button>
+                      </form>
+                    </td>
                   </tr>
                 <% }); %>
               </tbody>
@@ -148,6 +109,9 @@
           </div>
           <div class="col-md-6">
             <h2>Roope</h2>
+            <!--<form class="" action="/sortName" method="post">
+              <button type="submit" name="sortButton" class="btn btn-danger" value="" onclick="this.form.submit()">X</button>
+            </form>-->
             <table class="table table-hover">
               <thead class="thead-dark">
                 <tr>
@@ -167,6 +131,39 @@
                         <button type="submit" name="deletedButton" class="btn btn-danger hover-target deleteButton" value="<%= game._id %>" onclick="this.form.submit()">X</button>
                       </form>
                     </td>
+                    <td>
+                      <form class="" action="/transferRoope" method="post">
+                        <button type="submit" name="transferButton" class="btn btn-warning hover-target transferButton" value="<%= game.name %>" onclick="this.form.submit()">-></button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec-pad-top sec-pad-bottom" id="releasedGamesTable">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Released games</h2>
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Game</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col">Review</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% releasedGameList.forEach(function(game) { %>
+                  <tr>
+                    <td class="change-color"><%= game.name %></td>
+                    <td class="change-color"><%= game.rating %></td>
+                    <td class="change-color"><%= game.review %></td>
                   </tr>
                 <% }); %>
               </tbody>

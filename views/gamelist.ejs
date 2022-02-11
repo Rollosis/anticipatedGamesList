@@ -91,7 +91,7 @@
                   <tr class="hover-trigger">
                     <td class="change-color"><%= game.name %></td>
                     <td class="change-color"><%= game.platform %></td>
-                    <td class="change-color"><%= game.releaseDate %></td>
+                    <td class="change-color" name="test"><%= game.releaseDate %></td>
                     <td>
                       <form class="" action="/delete" method="post">
                         <button type="submit" name="deleteButton" class="btn btn-danger hover-target deleteButton" value="<%= game._id %>" onClick="deleteConfirm()">X</button>

@@ -20,7 +20,7 @@ const gameListSchema = new mongoose.Schema ({
 
 const releasedGameSchema = new mongoose.Schema ({
   name: String,
-  rating: Number,
+  rating: String,
   review: String
 });
 
@@ -32,6 +32,7 @@ app.get('/', function(req, res) {
   var modelRoope = mongoose.model('Roope');
   var modelLaura = mongoose.model('Laura');
   var modelReleased = mongoose.model('Release');
+  const test = req.body.test;
 
   modelRoope.find({}, function (err, roopeGames) {
     modelLaura.find({}, function (err, lauraGames) {
@@ -76,6 +77,7 @@ app.post('/', function(req, res) {
   res.redirect('/');
 });
 
+// DELETE GAME FROM LAURAS TABLE
  app.post('/delete', function(req, res) {
    const clickedItemId = req.body.deleteButton;
 
@@ -88,14 +90,11 @@ app.post('/', function(req, res) {
    res.redirect('/');
  });
 
+// TRANSFER GAME FROM LAURAS HYPED GAMES TO RELEASED GAMES TABLE
  app.post('/transferLaura', function(req, res) {
    const clickedItem = req.body.transferButton;
 
-   Release.create({name: clickedItem}, function(err){
-     if (!err) {
-       console.log('Transferred ' + clickedItem);
-     }
-   });
+   Release.create({name: gameName, rating: 'NO RATING', review: 'NO REVIEW'});
 
    Laura.findOneAndDelete({name: clickedItem}, function(err){
      if (!err) {
@@ -106,6 +105,7 @@ app.post('/', function(req, res) {
    res.redirect('/');
  });
 
+// DELETE GAME FROM ROBERTS TABLE
  app.post('/deleted', function(req, res) {
    const clickedItemId = req.body.deletedButton;
 
@@ -118,12 +118,15 @@ app.post('/', function(req, res) {
    res.redirect('/');
  });
 
+// TRANSFER GAME FROM ROBERTS HYPED GAMES TO RELEASED GAMES TABLE
  app.post('/transferRoope', function(req, res) {
    const clickedItem = req.body.transferButton;
 
-   Release.create({name: clickedItem}, function(err){
-     if (!err) {
-       console.log('Transferred ' + clickedItem);
+   Release.create({name: clickedItem, rating: 'NO RATING', review: 'NO REVIEW'});
+
+   Release.findOneAndUpdate(clickedItem, {rating: 'Pending...'}, function(err) {
+     if (err) {
+       console.log('Something went wrong');
      }
    });
 
@@ -157,30 +160,6 @@ app.post('/', function(req, res) {
 
    res.redirect('/');
   });
-
- // app.post('/updateGame', function(req, res) {
- //   user = req.body.userUpdate;
- //   updateLaura = req.body.selectLaura;
- //   updateRoope = req.body.selectRoope;
- //   updateValue = req.body.updateValue;
- //
- //   if (user === 'roopeUpdate') {
- //     Roope.updateOne({name: updateRoope}, {name: updateValue}, function(err) {
- //       if (err) {
- //         console.log(err);
- //       }
- //     });
- //   } else if (user === 'lauraUpdate') {
- //     Laura.updateOne({name: updateLaura}, function(err) {
- //       if (err) {
- //         console.log(err);
- //       }
- //     });
- //   }
- //
- //   console.log(user + ' ' + updateRoope + ' ' + updateValue);
- //   res.redirect('/updateGame');
- //  });
 
   app.listen(process.env.PORT || 3000, function() {
     console.log('Server has started successfully');

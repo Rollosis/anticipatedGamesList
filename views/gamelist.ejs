@@ -151,11 +151,11 @@
           <div class="col-md-12">
             <h2>Add a review</h2>
             <form action="/gameReview" method="post">
-              <div class="form-row">
-                <div class="form-group col-md-12">
+              <div class="form-row col-md-12">
+                <div class="form-group ">
                   <div class="form-group col-md-5">
                     <label for="gameName">Game</label>
-                    <select type="text" name="releasedGameName" class="form-control" required>
+                    <select id="releasedGame" type="text" name="releasedGameName" class="form-control" required>
                       <option value="">Select game for review...</option>
                       <% releasedGameList.forEach(function(releasedgame) { %>
                         <option><%= releasedgame.name %></option>
@@ -164,7 +164,7 @@
                   </div>
                 </div>
               </div>
-              <div id="formGroup" class="form-row col-md-12">
+              <div id="reviewFields" class="form-row col-md-12" style="display:none;">
                 <div class="form-group col-md-5">
                   <label for="platform">Rating</label>
                   <select id="platform" class="form-control" name="rating" required>

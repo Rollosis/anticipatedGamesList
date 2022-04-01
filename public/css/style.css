@@ -16,6 +16,18 @@ body {
   padding-bottom:30px;
 }
 
+a.nav {
+  color:#F1E3F7;
+  display:inline-block;
+  text-decoration:none;
+  font-size:20px;
+  margin-right:20px;
+}
+
+a.nav:hover, a.nav:active {
+  color: #E528D6;
+}
+
 .table {
   margin-bottom:3rem !important;
   /*color:#E9BFF2;*/

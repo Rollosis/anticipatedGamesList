@@ -115,12 +115,7 @@ app.post('/robertDelete', function(req, res) {
  app.post('/robertTransfer', function(req, res) {
    const clickedItem = req.body.transferButton;
 
-   RobertReleasedGames.create({name: clickedItem, rating: 'NO RATING', review: 'NO REVIEW'});
-   RobertReleasedGames.findOneAndUpdate(clickedItem, {rating: 'Pending...'}, function(err) {
-     if (err) {
-       console.log('Something went wrong');
-     }
-   });
+   RobertReleasedGames.create({name: clickedItem, rating: '-', review: '-'});
 
    Roope.findOneAndDelete({name: clickedItem}, function(err){
      if (!err) {
@@ -220,7 +215,7 @@ app.post('/lauraUpdate', function(req, res) {
 app.post('/lauraTransfer', function(req, res) {
   const clickedItem = req.body.transferButton;
 
-  LauraReleasedGames.create({name: gameName, rating: 'NO RATING', review: 'NO REVIEW'});
+  LauraReleasedGames.create({name: clickedItem, rating: '-', review: '-'});
   Laura.findOneAndDelete({name: clickedItem}, function(err) {
     if (!err) {
       console.log('Deleted');

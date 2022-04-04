@@ -76,6 +76,34 @@
             </table>
           </div>
           <div class="col-md-6">
+            <h2>Laura's Reviews</h2>
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Game</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col">Review</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% lauraReleasedGameList.forEach(function(game) { %>
+                  <tr>
+                    <td class="change-color"><%= game.name %></td>
+                    <td class="change-color"><%= game.rating %></td>
+                    <td class="change-color"><%= game.review %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec-pad-top sec-pad-bottom" id="releasedGamesTable">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
             <h2>Robert's Hyped games</h2>
             <table class="table table-hover">
               <thead class="thead-dark">
@@ -101,34 +129,6 @@
                         <button type="submit" name="transferButton" class="btn btn-warning hover-target transferButton" value="<%= game.name %>" onclick="this.form.submit()">-></button>
                       </form>
                     </td>-->
-                  </tr>
-                <% }); %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec-pad-top sec-pad-bottom" id="releasedGamesTable">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h2>Laura's Reviews</h2>
-            <table class="table table-hover">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Game</th>
-                  <th scope="col">Rating</th>
-                  <th scope="col">Review</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% lauraReleasedGameList.forEach(function(game) { %>
-                  <tr>
-                    <td class="change-color"><%= game.name %></td>
-                    <td class="change-color"><%= game.rating %></td>
-                    <td class="change-color"><%= game.review %></td>
                   </tr>
                 <% }); %>
               </tbody>
